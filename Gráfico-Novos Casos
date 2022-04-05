@@ -5,20 +5,15 @@ import pandas as pd
 # Gerar arquivo .csv só com os dados do Brasil
 
 url_global = 'https://raw.githubusercontent.com/MouraMarcelo/DataCovid/main/global-data.csv'
-
 covid_df = pd.read_csv(url_global)
-
 br_covid_df = covid_df[covid_df['Country_code'] == 'BR']
-
 br_covid_df.to_csv('brasil-data.csv', encoding = 'utf-8-sig') 
 files.download('brasil-data.csv')
 
 # Importar dados já filtrados
 
 url_brasil = 'https://raw.githubusercontent.com/MouraMarcelo/DataCovid/main/brasil-data.csv'
-
 br_covid_df = pd.read_csv(url_brasil)
-
 graphic = px.line(br_covid_df,
   x = 'Date_reported', y = 'New_cases',
   labels={
