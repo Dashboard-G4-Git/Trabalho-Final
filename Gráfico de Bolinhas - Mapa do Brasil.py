@@ -3,7 +3,6 @@ import plotly.express as px
 from folium import plugins
 import numpy as np
 import folium
-import json
 
 df = pd.read_csv(('caso.csv'), parse_dates=['date'])
 df.dropna()
