@@ -1,7 +1,7 @@
 from google.colab import files 
 import plotly.express as px 
 import pandas as pd 
-import plotly.express as px
+
 
 url_global = 'https://raw.githubusercontent.com/guga1012/Dados-APC-trabalho/main/WHO-COVID-19-global-data%20(1).csv'
 covid_df = pd.read_csv(url_global)
