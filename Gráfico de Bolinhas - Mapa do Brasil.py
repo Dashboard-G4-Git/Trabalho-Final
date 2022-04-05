@@ -22,8 +22,8 @@ geo_last = geo_last.dropna(subset=['longitude'])
 geo_last = geo_last.dropna(subset=['latitude'])
 geo_last.head(100)
 
-m = folium.Map(location=[-9, -50],
-                zoom_start=5)#tiles='cartodbpositron'
+m = folium.Map(location=[-9, -50],tiles='Stamen terrain',
+                zoom_start=5)#tiles='cartodbpositron' or 'Stamen terrain'
 m.add_child(folium.LatLngPopup())
 
 for i in range(0, len(geo_last)):
