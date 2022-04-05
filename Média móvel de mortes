@@ -1,0 +1,45 @@
+from google.colab import files 
+import plotly.express as px 
+import pandas as pd 
+import plotly.express as px
+
+url_global = 'https://raw.githubusercontent.com/guga1012/Dados-APC-trabalho/main/WHO-COVID-19-global-data%20(1).csv'
+covid_df = pd.read_csv(url_global)
+br_covid_df = covid_df[covid_df['Country_code'] == 'BR']
+br_covid_df.to_csv('brasil-data.csv', encoding = 'utf-8-sig')
+files.download('brasil-data.csv')
+
+media_movel = 'https://raw.githubusercontent.com/guga1012/Dados-APC-trabalho/main/brasil-data%20(1).csv'
+
+br_covid_df = pd.read_csv(url_brasil)
+
+def MV(lista, intervalo):
+  tamanho = len(lista)
+  nova_lista = []
+
+  for i in range(intervalo):
+    nova_lista.append(0)
+
+  for i in range(intervalo, tamanho):
+    somatorio = sum(lista[i:intervalo+i]) / intervalo
+    nova_lista.append(somatorio)
+
+  return nova_lista
+  
+  media_movel = MV(br_covid_df['New_deaths'], 30)
+
+br_covid_df.insert(1, "Moving_average", media_movel)
+
+graphic = px.line(br_covid_df,
+  x = 'Date_reported', y = 'Moving_average',
+  labels={
+      'Date_reported':'Date', 
+      'Moving_average':'Moving average (30 days)'
+    }
+  )
+
+'''graphic.update_traces(xbins_size = 'M1')
+graphic.update_layout(bargap=0.1)
+graphic.update_xaxes(showgrid=True, ticklabelmode='period', dtick = 'M1', tickformat='%b\n%Y')'''
+
+graphic.show()
