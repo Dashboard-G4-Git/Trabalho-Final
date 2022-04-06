@@ -21,7 +21,7 @@ def MV(lista, intervalo):
     nova_lista.append(0)
 
   for i in range(intervalo, tamanho):
-    somatorio = sum(lista[i:intervalo+i]) / intervalo
+    somatorio = sum(lista[i-intervalo:i]) / intervalo
     nova_lista.append(somatorio)
 
   return nova_lista
@@ -38,8 +38,5 @@ graphic = px.line(br_covid_df,
     }
   )
 
-'''graphic.update_traces(xbins_size = 'M1')
-graphic.update_layout(bargap=0.1)
-graphic.update_xaxes(showgrid=True, ticklabelmode='period', dtick = 'M1', tickformat='%b\n%Y')'''
 
 graphic.show()
