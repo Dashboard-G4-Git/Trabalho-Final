@@ -11,7 +11,7 @@ files.download('brasil-data.csv')
 
 media_movel = 'https://raw.githubusercontent.com/guga1012/Dados-APC-trabalho/main/brasil-data%20(1).csv'
 
-br_covid_df = pd.read_csv('brasil-data.csv')
+br_covid_df = pd.read_csv(media_movel)
 
 def MV(lista, intervalo):
   tamanho = len(lista)
