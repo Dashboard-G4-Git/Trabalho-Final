@@ -7,7 +7,6 @@ url_global = 'https://raw.githubusercontent.com/guga1012/Dados-APC-trabalho/main
 covid_df = pd.read_csv(url_global)
 br_covid_df = covid_df[covid_df['Country_code'] == 'BR']
 br_covid_df.to_csv('brasil-data.csv', encoding = 'utf-8-sig')
-files.download('brasil-data.csv')
 
 media_movel = 'https://raw.githubusercontent.com/guga1012/Dados-APC-trabalho/main/brasil-data%20(1).csv'
 
